@@ -6,6 +6,7 @@ import (
 	"github.com/pkg/errors"
 	troubleshootv1beta1 "github.com/replicatedhq/troubleshoot/pkg/apis/troubleshoot/v1beta1"
 	"github.com/replicatedhq/troubleshoot/pkg/collect"
+	corev1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/rest"
 )
 
@@ -14,6 +15,7 @@ type CollectOpts struct {
 	IgnorePermissionErrors bool
 	KubernetesRestConfig   *rest.Config
 	ProgressChan           chan interface{}
+	ImagePullSecrets       map[string]*corev1.Secret
 }
 
 type CollectResult struct {
